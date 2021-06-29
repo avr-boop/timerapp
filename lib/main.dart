@@ -33,7 +33,7 @@ class _TimerState extends State<Timers> {
           secDuration--;
         } else {
           timerObject.cancel();
-          SystemSound.play(SystemSoundType.click);
+          SystemSound.play(SystemSoundType.alert);
         }
       });
     });
