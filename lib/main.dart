@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -32,6 +33,7 @@ class _TimerState extends State<Timers> {
           secDuration--;
         } else {
           timerObject.cancel();
+          SystemSound.play(SystemSoundType.click);
         }
       });
     });
@@ -148,8 +150,7 @@ class _TimerState extends State<Timers> {
                             ElevatedButton(
                               onPressed: () {
                                 setState(() {
-                                  secDuration =
-                                      int.parse(myController.text) * 60;
+                                  secDuration = 0;
                                   pauseStop = "Stop Timer";
                                   isVisible = true;
                                   isVisible1 = false;
