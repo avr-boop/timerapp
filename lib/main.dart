@@ -154,6 +154,7 @@ class _TimerState extends State<Timers> {
                                   pauseStop = "Stop Timer";
                                   isVisible = true;
                                   isVisible1 = false;
+                                  pauseTimer();
                                 });
                               },
                               child: Text("Reset Timer"),
