@@ -63,7 +63,9 @@ class _TimerState extends State<Timers> {
                       child: Text(
                         "$secDuration seconds",
                         style: TextStyle(
-                            fontSize: 28.0, fontWeight: FontWeight.bold),
+                            fontSize: 28.0,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: "Indieflower"),
                       ),
                     ),
                   ),
