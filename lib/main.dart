@@ -19,6 +19,7 @@ class Timers extends StatefulWidget {
 
 class _TimerState extends State<Timers> {
   bool isVisible = true;
+  bool isVisible1 = false;
   int secDuration = 0;
   final myController = TextEditingController();
   late Timer timerObject;
@@ -103,6 +104,7 @@ class _TimerState extends State<Timers> {
                               child: ElevatedButton(
                                 onPressed: () {
                                   setState(() {
+                                    isVisible1 = true;
                                     isVisible = false;
                                     secDuration =
                                         int.parse(myController.text) * 60;
@@ -119,25 +121,28 @@ class _TimerState extends State<Timers> {
                                 ),
                               ),
                             ),
-                            ElevatedButton(
-                              onPressed: () {
-                                setState(() {
-                                  if (pauseStop == "Stop Timer") {
-                                    pauseStop = "Resume";
-                                    pauseTimer();
-                                  } else {
-                                    pauseStop = "Stop Timer";
-                                    startTimer(secDuration);
-                                  }
-                                });
-                              },
-                              child: Text("$pauseStop"),
-                              style: ElevatedButton.styleFrom(
-                                onPrimary: Colors.white,
-                                elevation: 20.0,
-                                shadowColor: Colors.blueAccent,
-                                onSurface: Colors.red.shade400,
-                                primary: Colors.red.shade400,
+                            Visibility(
+                              visible: isVisible1,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  setState(() {
+                                    if (pauseStop == "Stop Timer") {
+                                      pauseStop = "Resume";
+                                      pauseTimer();
+                                    } else {
+                                      pauseStop = "Stop Timer";
+                                      startTimer(secDuration);
+                                    }
+                                  });
+                                },
+                                child: Text("$pauseStop"),
+                                style: ElevatedButton.styleFrom(
+                                  onPrimary: Colors.white,
+                                  elevation: 20.0,
+                                  shadowColor: Colors.blueAccent,
+                                  onSurface: Colors.red.shade400,
+                                  primary: Colors.red.shade400,
+                                ),
                               ),
                             ),
                             ElevatedButton(
@@ -147,6 +152,7 @@ class _TimerState extends State<Timers> {
                                       int.parse(myController.text) * 60;
                                   pauseStop = "Stop Timer";
                                   isVisible = true;
+                                  isVisible1 = false;
                                 });
                               },
                               child: Text("Reset Timer"),
